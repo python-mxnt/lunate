@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>lunote</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="notes and actions">
+        <header class="brand">
+          <h1>lunote</h1>
+          <p>notes and actions</p>
+        </header>
+
+        <div class="sidebar-actions">
+          <button id="new-note-btn" type="button">new note</button>
+          <button id="remove-note-btn" class="secondary-btn" type="button">
+            remove note
+          </button>
+        </div>
+
+        <div class="notes-meta">
+          <h2>your notes</h2>
+          <span id="notes-count">0 notes</span>
+        </div>
+
+        <ul id="notes-list" class="notes-list" aria-live="polite"></ul>
+      </aside>
+
+      <section class="editor" aria-label="note editor">
+        <label for="note-title">title</label>
+        <input id="note-title" type="text" placeholder="untitled" />
+
+        <label for="note-content">note</label>
+        <textarea
+          id="note-content"
+          placeholder="write your note here..."
+          rows="16"
+        ></textarea>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>

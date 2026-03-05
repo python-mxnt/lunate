@@ -1,0 +1,253 @@
+:root {
+  --bg: #f2f2f2;
+  --surface: #ffffff;
+  --surface-soft: #fafafa;
+  --text: #161616;
+  --muted: #6a6a6a;
+  --line: #dadada;
+  --line-strong: #b7b7b7;
+  --shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  --radius-xl: 26px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "instrument sans", "avenir next", "helvetica neue", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 12% 10%, #ffffff 0%, transparent 38%),
+    radial-gradient(circle at 90% 86%, #ededed 0%, transparent 52%),
+    var(--bg);
+}
+
+.app-shell {
+  width: min(1240px, 95vw);
+  min-height: min(880px, 90vh);
+  margin: 2.3rem auto;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.sidebar {
+  padding: 1.2rem;
+  border-right: 1px solid var(--line);
+  background: var(--surface-soft);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: 0.01em;
+}
+
+.brand p {
+  margin: 0.28rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.sidebar-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.55rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+button {
+  appearance: none;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  background: var(--text);
+  color: #ffffff;
+  padding: 0.52rem 0.95rem;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: transform 0.12s ease, opacity 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.notes-meta {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.notes-meta h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+#notes-count {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.notes-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.note-item {
+  width: 100%;
+  text-align: left;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.72rem 0.75rem;
+  display: grid;
+  gap: 0.23rem;
+}
+
+.note-item:hover {
+  background: #ffffff;
+}
+
+.note-item.is-active {
+  border-color: var(--text);
+  box-shadow: 0 0 0 1px var(--text) inset;
+}
+
+.note-item-title {
+  font-size: 0.93rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-item-preview {
+  font-size: 0.83rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty-state {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.editor {
+  padding: 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.editor label {
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+}
+
+#note-title,
+#note-content {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 0.82rem 0.95rem;
+  background: #ffffff;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#note-title {
+  margin-bottom: 0.95rem;
+}
+
+#note-content {
+  flex: 1;
+  resize: none;
+  min-height: 320px;
+  line-height: 1.45;
+}
+
+#note-title:focus,
+#note-content:focus {
+  outline: none;
+  border-color: var(--line-strong);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+#note-title:disabled,
+#note-content:disabled,
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    width: min(1000px, 97vw);
+    min-height: 95vh;
+    margin: 1rem auto;
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    max-height: 42vh;
+  }
+
+  .editor {
+    min-height: 54vh;
+    padding: 1rem;
+  }
+
+  #note-content {
+    min-height: 260px;
+  }
+}

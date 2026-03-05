@@ -67,6 +67,7 @@ body {
 .sidebar-actions {
   margin-top: 1rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.55rem;
 }
 
@@ -206,10 +207,35 @@ button:active {
   margin-bottom: 0.95rem;
 }
 
-#note-content {
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.8rem;
+}
+
+.toolbar button {
+  border-radius: 10px;
+  padding: 0.45rem 0.62rem;
+  background: #ffffff;
+  color: var(--text);
+  border-color: var(--line-strong);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.editor-panels {
   flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0.85rem;
+}
+
+#note-content {
   resize: none;
   min-height: 320px;
+  height: 100%;
   line-height: 1.45;
 }
 
@@ -218,6 +244,93 @@ button:active {
   outline: none;
   border-color: var(--line-strong);
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.markdown-preview {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  padding: 0.85rem 0.95rem;
+  overflow: auto;
+  min-height: 320px;
+  height: 100%;
+  line-height: 1.45;
+}
+
+.markdown-preview :first-child {
+  margin-top: 0;
+}
+
+.markdown-preview :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  margin: 0.95rem 0 0.55rem;
+  line-height: 1.22;
+}
+
+.markdown-preview p {
+  margin: 0.55rem 0;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.markdown-preview li {
+  margin: 0.2rem 0;
+}
+
+.markdown-preview blockquote {
+  margin: 0.7rem 0;
+  padding: 0.25rem 0.7rem;
+  border-left: 3px solid var(--line-strong);
+  color: var(--muted);
+}
+
+.markdown-preview pre {
+  margin: 0.65rem 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #f7f7f7;
+  padding: 0.65rem 0.75rem;
+  overflow: auto;
+}
+
+.markdown-preview code {
+  font-family: "menlo", "sfmono-regular", "consolas", monospace;
+  font-size: 0.9em;
+  background: #f2f2f2;
+  border-radius: 6px;
+  padding: 0.08rem 0.3rem;
+}
+
+.markdown-preview pre code {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.markdown-preview hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0.9rem 0;
+}
+
+.markdown-preview a {
+  color: #0d0d0d;
+}
+
+.md-empty {
+  color: var(--muted);
 }
 
 #note-title:disabled,
@@ -247,7 +360,15 @@ button:disabled {
     padding: 1rem;
   }
 
+  .editor-panels {
+    grid-template-columns: 1fr;
+  }
+
   #note-content {
     min-height: 260px;
+  }
+
+  .markdown-preview {
+    min-height: 220px;
   }
 }

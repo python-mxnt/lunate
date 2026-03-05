@@ -19,6 +19,9 @@
           <button id="remove-note-btn" class="secondary-btn" type="button">
             remove note
           </button>
+          <button id="download-note-btn" class="secondary-btn" type="button">
+            download .md
+          </button>
         </div>
 
         <div class="notes-meta">
@@ -34,11 +37,27 @@
         <input id="note-title" type="text" placeholder="untitled" />
 
         <label for="note-content">note</label>
-        <textarea
-          id="note-content"
-          placeholder="write your note here..."
-          rows="16"
-        ></textarea>
+        <div class="toolbar" id="markdown-toolbar" aria-label="markdown toolbar">
+          <button type="button" data-action="heading" title="heading">h1</button>
+          <button type="button" data-action="bold" title="bold">bold</button>
+          <button type="button" data-action="italic" title="italic">italic</button>
+          <button type="button" data-action="quote" title="quote">quote</button>
+          <button type="button" data-action="ul" title="bullet list">list</button>
+          <button type="button" data-action="ol" title="number list">1.</button>
+          <button type="button" data-action="task" title="task list">task</button>
+          <button type="button" data-action="code" title="code">code</button>
+          <button type="button" data-action="link" title="link">link</button>
+          <button type="button" data-action="divider" title="divider">---</button>
+        </div>
+
+        <div class="editor-panels">
+          <textarea
+            id="note-content"
+            placeholder="write your note here..."
+            rows="16"
+          ></textarea>
+          <article id="markdown-preview" class="markdown-preview"></article>
+        </div>
       </section>
     </main>
 
